@@ -22,7 +22,11 @@ var requestObj = {
   },
 };
 
-$.ajax(requestObj).done(function (response) {
-  console.log("typeof response = " + typeof response);
-  console.log("response = ", response);
-});
+function searchYelp() {
+  $.ajax(requestObj).done(function (response) {
+    console.log("typeof response = " + typeof response);
+    console.log("response = ", response);
+
+    return response;
+  });
+}

@@ -33,12 +33,13 @@ function initMap() {
   // Update current location is not working
 
   // updateCurrentLocation();
+  var yelp_data = searchYelp();
 
   console.log("initMap-loc: ");
   console.log(current_loc);
   // customize options
   var options = {
-    zoom: 15,
+    zoom: 16,
     //center: { lat: 41.87396088943666, lng: -87.95070683026313 },
     center: { lat: current_loc.lat, lng: current_loc.lng },
     // center: { lat: 41.8739283, lng: -87.9509309 },
@@ -52,7 +53,7 @@ function initMap() {
     const marker = new google.maps.Marker({
       position: { lat: shop.lat, lng: shop.lng },
       map: map,
-      //icon: "images/coffee_24x24.jpeg",
+      icon: "images/green_cup_40x40.png",
       title: shop.name,
     });
   });
