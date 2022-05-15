@@ -33,25 +33,55 @@ function initMap() {
   // Update current location is not working
 
   // updateCurrentLocation();
-  var yelp_data = searchYelp();
+  searchYelp();
+
+  setTimeout(() => {
+    console.log("yelp businesses");
+    console.log(yelp_data);
+    renderMap(yelp_data);
+  }, 1500);
+}
+
+function renderMap(data) {
+  console.log("yelp data");
+  console.log(data);
 
   console.log("initMap-loc: ");
+
   console.log(current_loc);
   // customize options
   var options = {
-    zoom: 16,
+    zoom: 14,
     //center: { lat: 41.87396088943666, lng: -87.95070683026313 },
-    center: { lat: current_loc.lat, lng: current_loc.lng },
+    center: {
+      lat: data.region.center.latitude,
+      lng: data.region.center.longitude,
+    },
     // center: { lat: 41.8739283, lng: -87.9509309 },
   };
 
   // map
   var map = new google.maps.Map(document.querySelector("#map"), options);
 
+  //Center
+  const center = new google.maps.Marker({
+    position: {
+      lat: data.region.center.latitude,
+      lng: data.region.center.longitude,
+    },
+    map: map,
+    icon: "images/home-map-marker_50x50.png",
+    title: "My Location",
+  });
+
   // The marker, positioned at center
-  shop_locs.forEach((shop) => {
+  // only return the top 10 records
+  data.businesses.slice(9).forEach((shop) => {
     const marker = new google.maps.Marker({
-      position: { lat: shop.lat, lng: shop.lng },
+      position: {
+        lat: shop.coordinates.latitude,
+        lng: shop.coordinates.longitude,
+      },
       map: map,
       icon: "images/green_cup_40x40.png",
       title: shop.name,

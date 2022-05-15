@@ -1,3 +1,5 @@
+var yelp_data;
+
 var token =
   "Bearer msMwMqOdMhH4dl0FgHEy0F7ETBrij21nJbjNtU-jmoM4jg48xbTxsvWNg7Ejoc0l341jD7ZveF2e7P4DKtDIdlTOkfR2bwglwWjBHoZguaOCIPB3TH4QHmh8umx9YnYx";
 var cors_anywhere_url = "https://cors-anywhere-bc.herokuapp.com";
@@ -26,7 +28,8 @@ function searchYelp() {
   $.ajax(requestObj).done(function (response) {
     console.log("typeof response = " + typeof response);
     console.log("response = ", response);
+    console.log("response = ", response.businesses.slice(9));
 
-    return response;
+    yelp_data = response;
   });
 }
