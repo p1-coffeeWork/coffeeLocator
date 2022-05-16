@@ -28,20 +28,6 @@ var shop_locs = [
 //   }
 // }
 
-// callback function
-function initMap() {
-  // Update current location is not working
-
-  // updateCurrentLocation();
-  searchYelp();
-
-  setTimeout(() => {
-    console.log("yelp businesses");
-    console.log(yelp_data);
-    renderMap(yelp_data);
-  }, 1500);
-}
-
 function renderMap(data) {
   console.log("yelp data");
   console.log(data);
@@ -88,3 +74,6 @@ function renderMap(data) {
     });
   });
 }
+
+// initialize Yelp request
+searchYelp();

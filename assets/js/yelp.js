@@ -1,5 +1,3 @@
-var yelp_data;
-
 var token =
   "Bearer msMwMqOdMhH4dl0FgHEy0F7ETBrij21nJbjNtU-jmoM4jg48xbTxsvWNg7Ejoc0l341jD7ZveF2e7P4DKtDIdlTOkfR2bwglwWjBHoZguaOCIPB3TH4QHmh8umx9YnYx";
 var cors_anywhere_url = "https://cors-anywhere-bc.herokuapp.com";
@@ -10,7 +8,7 @@ function clientCallback() {
 
 var requestObj = {
   url: cors_anywhere_url + "/" + yelp_search_url,
-  data: { term: "coffee", location: "chicago" },
+  data: { term: "coffee", location: "60611" },
   headers: { Authorization: token },
   error: function (jqXHR, textStatus, errorThrown) {
     console.log(
@@ -28,8 +26,8 @@ function searchYelp() {
   $.ajax(requestObj).done(function (response) {
     console.log("typeof response = " + typeof response);
     console.log("response = ", response);
-    console.log("response = ", response.businesses.slice(9));
 
-    yelp_data = response;
+    // Display business on Map
+    renderMap(response);
   });
 }
