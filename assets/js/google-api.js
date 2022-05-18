@@ -145,3 +145,5 @@ function CenterControl(controlDiv, map) {
     map.setCenter(current_loc);
   });
 }
+
+//renderMap(yelp_data);
