@@ -31,3 +31,6 @@ function searchYelp() {
     renderMap(response);
   });
 }
+
+// initialize Yelp request
+searchYelp();
