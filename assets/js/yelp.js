@@ -9,6 +9,7 @@ var requestObj;
 if ("geolocation" in navigator) {
   var modalEl = document.querySelector("#modal1");
 
+
   function handleYelpData(data) {
     console.log(data);
     renderMap(data);
