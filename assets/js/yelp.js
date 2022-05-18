@@ -11,7 +11,7 @@ if ("geolocation" in navigator) {
 
   function handleYelpData(data) {
     console.log(data);
-    // TODO use yelp data
+    renderMap(data);
   }
 
   // requesting permission to get location info
@@ -20,6 +20,7 @@ if ("geolocation" in navigator) {
     function(position) {
       modalEl.addEventListener("submit", function(event) {
         event.preventDefault();
+        console.log(event);
 
         var queryParams = new URLSearchParams({
           term: "coffee",

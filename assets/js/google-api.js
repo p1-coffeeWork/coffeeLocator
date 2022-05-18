@@ -33,7 +33,7 @@ function initMap() {
   // Update current location is not working
 
   // updateCurrentLocation();
-  var yelp_data = searchYelp();
+  var yelp_data = handleYelpData();
 
   console.log("initMap-loc: ");
   console.log(current_loc);
