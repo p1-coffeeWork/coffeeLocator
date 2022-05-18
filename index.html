@@ -1,32 +1,99 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+       
     </head>
     <body>
+        <header>
+            <nav>
+                <div class="nav-wrapper teal">
+                <a href="#" class="brand-logo center">Coffee Shop!</a>
+                <ul id="nav-mobile" class="left hide-on-med-and-down">
+                    <li><a href="#">Coffee In</a></li>
+                    <li><a href="#">Coffee Out</a></li>
+                 </ul>
+                 </div>
+            </nav>
+            </header>
          <!-- Modal Trigger -->
-         
-  <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>
-
-  <!-- Modal Structure -->
-  <div id="modal1" class="modal">
-    <div class="modal-content">
-      <h4>Welcome to Coffee Shop!</h4>
-      <p>What kind of coffee shop are you looking for today?</p>
-      <form action="#">
-        <p>
-          <label>
-            <input type="checkbox" class="filled-in" checked="checked" />
-            <span>Filled in</span>
-          </label>
-        </p>
-      </form>
-    </div>
-    <div class="modal-footer">
-      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
-    </div>
-  </div>
-
+        <div style="display: flex; justify-content:center">
+        <a class="waves-effect waves-light btn teal darken-4" style="margin:2px;" href="maps.html">Map</a>
+        <a class="waves-effect waves-light btn modal-trigger teal darken-4" style="margin:2px;" href="#modal1">Find Your Shop</a>
+        </div>
+        <!-- Modal Structure -->
+        <div id="modal1" class="modal">
+        <div class="modal-content">
+            <h4>Welcome to Coffee Shop!</h4>
+            <p>What kind of coffee shop are you looking for today?</p>
+            <form action="#">
+                <p>
+                    <label> 
+                    <input type="checkbox" class="filled-in" />
+                    <span>Wifi</span>
+                    </label>
+                </p>
+                <p>
+                    <label> 
+                    <input type="checkbox" class="filled-in" />
+                    <span>Parking</span>
+                    </label>
+                </p>
+                  <div class="input-field col s12">
+                    <select>
+                      <option value="" disabled selected>Choose your option</option>
+                      <option value="1">$</option>
+                      <option value="2">$$</option>
+                      <option value="3">$$$</option>
+                    </select>
+                    <label>Price Range</label>
+                  </div>
+                  <div class="input-field col s12">
+                    <select>
+                      <option value="" disabled selected>Choose your option</option>
+                      <option value="1">4+ Stars</option>
+                      <option value="2">3+ Stars</option>
+                      <option value="3">2+ Stars</option>
+                    </select>
+                    <label>Coffee Shop Rating</label>
+                  </div>
+                  <div class="input-field col s12">
+                    <select>
+                      <option value="" disabled selected>Choose your option</option>
+                      <option value="1">within 10mi</option>
+                      <option value="2">within 25mi</option>
+                      <option value="3">within 50mi</option>
+                    </select>
+                    <label>Distance</label>
+                  </div>
+                  <div class="input-field col s6">
+                    <input id="zip_code" type="text" class="validate">
+                    <label for="zip_code">Zip Code</label>
+                  </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Submit</a>
+         </div>
+        </div>
+        <div class="row">
+            <div class="col s6 m3">
+              <div class="card blue-grey darken-1">
+                <div class="card-content white-text">
+                  <span class="card-title">Coffee Shops Near You</span>
+                  <ul>
+                      <li></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+       
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="./assets/js/materialize.js"></script>
+  <script src="./assets/js/yelp.js"></script>
     </body>
 </html>

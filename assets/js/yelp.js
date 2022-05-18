@@ -5,32 +5,76 @@ var yelp_search_url = "https://api.yelp.com/v3/businesses/search";
 function clientCallback() {
   console.log("made it to the client callback");
 }
+var requestObj;
+if ("geolocation" in navigator) {
+  var modalEl = document.querySelector("#modal1");
 
-var requestObj = {
-  url: cors_anywhere_url + "/" + yelp_search_url,
-  data: { term: "coffee", location: "60611" },
-  headers: { Authorization: token },
-  error: function (jqXHR, textStatus, errorThrown) {
-    console.log(
-      "AJAX error,jqXHR = ",
-      jqXHR,
-      ", textStatus = ",
-      textStatus,
-      ",errorThrown = ",
-      errorThrown
-    );
-  },
-};
 
-function searchYelp() {
-  $.ajax(requestObj).done(function (response) {
-    console.log("typeof response = " + typeof response);
-    console.log("response = ", response);
+  function handleYelpData(data) {
+    console.log(data);
+    renderMap(data);
+  }
 
-    // Display business on Map
-    renderMap(response);
-  });
+  // requesting permission to get location info
+  navigator.geolocation.getCurrentPosition(
+    // will be called if user allows location info
+    function(position) {
+      modalEl.addEventListener("submit", function(event) {
+        event.preventDefault();
+        console.log(event);
+
+        var queryParams = new URLSearchParams({
+          term: "coffee",
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude
+        });
+        fetch(
+          `${cors_anywhere_url}/${yelp_search_url}?${queryParams}`,
+          {
+            headers: { Authorization: token }
+          }
+        )
+          .then(function(response) {
+            return response.json();
+          })
+          .then(handleYelpData)
+          .catch(function(error) {
+            console.error(error);
+          })
+      })
+    },
+    // will be called if user denies or there is an error
+    function(error) {
+      // adding zip input for location
+      $(modalEl.querySelector(".modal-content")).append(`
+        <div class="input-field col s6">
+          <input id="zip_code" type="text" class="validate">
+          <label for="zip_code">Zip Code</label>
+        </div>
+      `);
+
+      modalEl.addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        var zipCode = modalEl.querySelector("input#zip_code").value.trim();
+        var queryParams = new URLSearchParams({
+          term: "coffee",
+          location: zipCode,
+        });
+        fetch(
+          `${cors_anywhere_url}/${yelp_search_url}?${queryParams}`,
+          {
+            headers: { Authorization: token }
+          }
+        )
+          .then(function(response) {
+            return response.json();
+          })
+          .then(handleYelpData)
+          .catch(function(error) {
+            console.error(error);
+          })
+      });
+    }
+  );
 }
-
-// initialize Yelp request
-searchYelp();
