@@ -11,6 +11,10 @@ if ("geolocation" in navigator) {
 
   function handleYelpData(data) {
     console.log(data);
+<<<<<<< HEAD
+=======
+    
+>>>>>>> fc4c47cb0a671183ffb0ea7b77fb0a7d07005266
   }
 
   // requesting permission to get location info
