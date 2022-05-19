@@ -62,7 +62,9 @@ function renderMap(data) {
 
   // The marker, positioned at center
   // only return the top 10 records
-  data.businesses.slice(9).forEach((shop) => {
+console.log(data.businesses)
+  data.businesses.forEach((shop) => {
+    console.log(shop.coordinates.latitude,shop.coordinates.longitude)
     const shop_marker = new google.maps.Marker({
       position: {
         lat: shop.coordinates.latitude,
