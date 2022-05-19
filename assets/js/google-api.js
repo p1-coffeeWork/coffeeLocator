@@ -54,7 +54,8 @@ function renderMap(data) {
     position: current_loc,
     animation: google.maps.Animation.DROP,
     map: map,
-    icon: "images/home-map-marker_50x50.png",
+    icon: "https://p1-coffeework.github.io/coffeeLocator/images/home-map-marker_50x50.png",
+    // when changing github pages to main from googleAPI put assets before images
     title: "My Location",
   });
   center_marker.addListener("click", toggleBounce);
@@ -68,7 +69,8 @@ function renderMap(data) {
         lng: shop.coordinates.longitude,
       },
       map: map,
-      icon: "images/green_cup_40x40.png",
+      icon: "https://p1-coffeework.github.io/coffeeLocator/images/green_cup_40x40.png",
+      // same thing as before with home map marker
       title: shop.name,
     });
 
