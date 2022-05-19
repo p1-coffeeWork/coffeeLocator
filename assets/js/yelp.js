@@ -10,14 +10,16 @@ function clientCallback() {
 }
 var requestObj;
 if ("geolocation" in navigator) {
-  var modalEl = document.querySelector("#modal1");
-  var maplink = document.querySelector("#map-link");
+  // var modalEl = document.querySelector("#submit-btn");
+  var maplink = document.querySelector("#submit-btn");
 
   function handleYelpData(data) {
     console.log(data);
     //window.location = "./maps.html";
+    
     // yelp_data = data;
     renderMap(data);
+
   }
 
   // requesting permission to get location info
@@ -32,6 +34,7 @@ if ("geolocation" in navigator) {
           term: "coffee",
           latitude: position.coords.latitude,
           longitude: position.coords.longitude,
+          price: 3,
         });
         fetch(`${cors_anywhere_url}/${yelp_search_url}?${queryParams}`, {
           headers: { Authorization: token },
