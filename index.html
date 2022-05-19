@@ -1,133 +1,85 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
-    />
-    <link rel="stylesheet" href="assets/css/style.css" />
-  </head>
-  <body>
-    <header>
-      <nav>
-        <div class="nav-wrapper teal">
-          <a href="#" class="brand-logo center">Coffee Shop!</a>
-          <ul id="nav-mobile" class="left hide-on-med-and-down">
-            <li><a href="#">Coffee In</a></li>
-            <li><a href="#">Coffee Out</a></li>
-          </ul>
-        </div>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+</head>
 
-      </nav>
+<body>
+    <header>
+        <nav>
+            <div class="nav-wrapper teal">
+                <a href="#" class="brand-logo center">Coffee Shop!</a>
+                <ul id="nav-mobile" class="left hide-on-med-and-down">
+                    <li><a href="#">Coffee In</a></li>
+                    <li><a href="#">Coffee Out</a></li>
+                </ul>
+            </div>
+
+        </nav>
     </header>
     <!-- Modal Trigger -->
     <div style="display: flex; justify-content: center">
-      <button
-        id="map-link"
-        class="waves-effect waves-light btn teal darken-4"
-        style="margin: 2px"
-      >
-        Map
-      </button>
-      <a
-        class="waves-effect waves-light btn modal-trigger teal darken-4"
-        style="margin: 2px"
-        href="#modal1"
-        >Find Your Shop</a
-      >
+        <button id="map-link" class="waves-effect waves-light btn teal darken-4" style="margin: 2px">
+            Map
+        </button>
+        <a class="waves-effect waves-light btn modal-trigger teal darken-4" style="margin: 2px" href="#modal1">Find Your
+            Shop</a>
     </div>
-        <!-- Modal Structure -->
-        <div id="modal1" class="modal">
+    <!-- Modal Structure -->
+    <div id="modal1" class="modal">
         <div class="modal-content">
             <h4>Welcome to Coffee Shop!</h4>
             <p>What kind of coffee shop are you looking for today?</p>
             <form action="#">
-                <p>
-                    <label> 
-                    <input type="checkbox" class="filled-in" />
-                    <span>Wifi</span>
-                    </label>
-                </p>
-                <p>
-                    <label> 
-                    <input type="checkbox" class="filled-in" />
-                    <span>Parking</span>
-                    </label>
-                </p>
-                  <div class="input-field col s12">
+
+                <div class="input-field col s12" id="price-param">
                     <select>
-                      <option value="" disabled selected>Choose your option</option>
-                      <option value="1">$</option>
-                      <option value="2">$$</option>
-                      <option value="3">$$$</option>
+                        <option value="" disabled selected>Choose your option</option>
+                        <option value="1">$</option>
+                        <option value="2">$$</option>
+                        <option value="3">$$$</option>
                     </select>
                     <label>Price Range</label>
-                  </div>
-                  <div class="input-field col s12">
+                </div>
+                <div class="input-field col s12">
                     <select>
-                      <option value="" disabled selected>Choose your option</option>
-                      <option value="1">4+ Stars</option>
-                      <option value="2">3+ Stars</option>
-                      <option value="3">2+ Stars</option>
+                        <option value="" disabled selected>Choose your option</option>
+                        <option value="1">4+ Stars</option>
+                        <option value="2">3+ Stars</option>
+                        <option value="3">2+ Stars</option>
                     </select>
                     <label>Coffee Shop Rating</label>
-                  </div>
-                  <div class="input-field col s12">
+                </div>
+                <div class="input-field col s12">
                     <select>
-                      <option value="" disabled selected>Choose your option</option>
-                      <option value="1">within 10mi</option>
-                      <option value="2">within 25mi</option>
-                      <option value="3">within 50mi</option>
+                        <option value="" disabled selected>Choose your option</option>
+                        <option value="1">greater than 500</option>
+                        <option value="2">100-500</option>
+                        <option value="3">Less than 100</option>
                     </select>
-                    <label>Distance</label>
-                  </div>
-                  <div class="input-field col s6">
-                    <input id="zip_code" type="text" class="validate">
-                    <label for="zip_code">Zip Code</label>
-                  </div>
+                    <label>Number of Ratings</label>
+                </div>
+                <div class="modal-footer">
+                    <button class="modal-close waves-effect waves-green btn-flat" id="submit-btn">Submit</button>
+                </div>
             </form>
         </div>
-        <div class="modal-footer">
-            <button class="modal-close waves-effect waves-green btn-flat">Submit</a>
-         </div>
-        </div>
-        <div class="row">
-            <div class="col s6 m3">
-              <div class="card blue-grey darken-1">
-                <div class="card-content white-text">
-                  <span class="card-title">Coffee Shops Near You</span>
-                  <ul>
-                      <li></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="input-field col s6">
-            <input id="zip_code" type="text" class="validate" />
-            <label for="zip_code">Zip Code</label>
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <a href="#!" class="modal-close waves-effect waves-green btn-flat"
-          >Submit</a
-        >
-      </div>
     </div>
     <div class="row">
-      <div class="col s6 m3">
-        <div class="card blue-grey darken-1">
-          <div class="card-content white-text">
-            <span class="card-title">Coffee Shops Near You</span>
-            <ul>
-              <li></li>
-            </ul>
-          </div>
+        <div class="col s6 m3">
+            <div class="card blue-grey darken-1">
+                <div class="card-content white-text">
+                    <span class="card-title">Coffee Shops Near You</span>
+                    <ul>
+                        <li></li>
+                    </ul>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
     <div id="map"></div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -137,6 +89,6 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBtc9LwjWT-8vxEDwPyfs2a-H6D6aQmoLU"></script>
     <script src="./assets/js/google-api.js"></script>
     <script src="./assets/js/yelp.js"></script>
-  </body>
+</body>
 
 </html>
