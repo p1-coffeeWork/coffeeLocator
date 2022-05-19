@@ -21,7 +21,25 @@ if ("geolocation" in navigator) {
     renderMap(data);
 
   }
+  var priceRange = document.querySelector("#price-range")
+  var rating = document.querySelector("#rating")
+  var numberReviews = document.querySelector("#number-of-reviews")
+  var price = ""
+  var rate = ""
+  var reviewNumber = ""
 
+  priceRange.addEventListener("change",function(event){
+    event.preventDefault()
+    price = this.value
+  })
+  rating.addEventListener("change",function(event){
+    event.preventDefault()
+    rate = this.value
+  })
+  numberReviews.addEventListener("change",function(event){
+    event.preventDefault()
+    reviewNumber = this.value
+  })
   // requesting permission to get location info
   navigator.geolocation.getCurrentPosition(
     // will be called if user allows location info
@@ -29,6 +47,9 @@ if ("geolocation" in navigator) {
       maplink.addEventListener("click", function (event) {
         event.preventDefault();
         console.log(event);
+        
+       
+        console.log(price,rate,reviewNumber)
 
         var queryParams = new URLSearchParams({
           term: "coffee",

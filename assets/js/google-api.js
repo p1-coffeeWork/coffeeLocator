@@ -33,6 +33,11 @@ var shop_locs = [
 function renderMap(data) {
   console.log("yelp data");
   console.log(data);
+  console.log(price,rate,reviewNumber);
+
+var newBusinesses = data.businesses.filter(shop => shop.price === price || shop.rating === rate)
+console.log(data)
+data.businesses = newBusinesses
 
   current_loc = {
     lat: data.region.center.latitude,
@@ -62,7 +67,9 @@ function renderMap(data) {
 
   // The marker, positioned at center
   // only return the top 10 records
-  data.businesses.slice(9).forEach((shop) => {
+console.log(data.businesses)
+  data.businesses.forEach((shop) => {
+    console.log(shop.coordinates.latitude,shop.coordinates.longitude)
     const shop_marker = new google.maps.Marker({
       position: {
         lat: shop.coordinates.latitude,
