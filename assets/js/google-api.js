@@ -33,6 +33,11 @@ var shop_locs = [
 function renderMap(data) {
   console.log("yelp data");
   console.log(data);
+  console.log(price,rate,reviewNumber);
+
+var newBusinesses = data.businesses.filter(shop => shop.price === price || shop.rating === rate)
+console.log(data)
+data.businesses = newBusinesses
 
   current_loc = {
     lat: data.region.center.latitude,
