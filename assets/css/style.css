@@ -1,13 +1,71 @@
+body {
+  background-image: url(../images/cacaoespresso-1.png);
+  background-size: cover;
+  background-position: center;
+  min-height: 1000px;
+  
+ }
+
 /* 
  * Always set the map height explicitly to define the size of the div element
  * that contains the map. 
  */
-#map {
-  height: 80%;
-  width: 80%;
-  margin: 0 150px;
+ #map {
+  height: 80vh !important;
+  width: 100%;
+  padding: 0 150px 200px;
 }
 
+.row {
+  height: 100vh !important;
+  margin-bottom: 0px !important;
+  padding: 20px 20px;
+}
+
+.info-window-row {
+  height: 40vh !important;
+  padding: 2px 2px;
+}
+
+.info-window-text {
+  font-size: 1.5rem;
+  font-family: sans-serif;
+  font-weight: bold;
+}
+
+.info-window-address {
+  font-size: 1rem !important;
+  font-family: sans-serif;
+  font-weight: bold;
+  text-decoration: underline;
+  background-color: transparent;
+}
+
+.info-window-header {
+  font-size: 2rem !important;
+  font-weight: bold !important;
+  text-align: center;
+}
+
+.mb-1 {
+  margin-bottom: 1.5rem !important;
+}
+
+.text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.mb-2,
+.my-2 {
+  margin-bottom: 0.5rem !important;
+}
+
+.font-weight-bold,
+.font-weight-bolder {
+  font-weight: 700 !important;
+}
 /* 
  * Optional: Makes the sample page fill the window. 
  */
@@ -17,3 +75,12 @@ body {
   margin: 0;
   padding: 0;
 }
+
+.border-red {
+  /* border: 1px solid red; */
+}
+
+.border-green {
+  border: 1px solid green;
+}
+

@@ -33,6 +33,11 @@ var shop_locs = [
 function renderMap(data) {
   console.log("yelp data");
   console.log(data);
+  console.log(price,rate,reviewNumber);
+
+var newBusinesses = data.businesses.filter(shop => shop.price === price || shop.rating === rate)
+console.log(data)
+data.businesses = newBusinesses
 
   current_loc = {
     lat: data.region.center.latitude,
@@ -54,21 +59,25 @@ function renderMap(data) {
     position: current_loc,
     animation: google.maps.Animation.DROP,
     map: map,
-    icon: "images/home-map-marker_50x50.png",
+    icon: "./assets/images/home-map-marker_50x50.png",
+    // when changing github pages to main from googleAPI put assets before images
     title: "My Location",
   });
   center_marker.addListener("click", toggleBounce);
 
   // The marker, positioned at center
   // only return the top 10 records
-  data.businesses.slice(9).forEach((shop) => {
+console.log(data.businesses)
+  data.businesses.forEach((shop) => {
+    console.log(shop.coordinates.latitude,shop.coordinates.longitude)
     const shop_marker = new google.maps.Marker({
       position: {
         lat: shop.coordinates.latitude,
         lng: shop.coordinates.longitude,
       },
       map: map,
-      icon: "images/green_cup_40x40.png",
+      icon: "./assets/images/green_cup_40x40.png",
+      // same thing as before with home map marker
       title: shop.name,
     });
 
@@ -145,3 +154,5 @@ function CenterControl(controlDiv, map) {
     map.setCenter(current_loc);
   });
 }
+
+//renderMap(yelp_data);
