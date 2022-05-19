@@ -42,7 +42,7 @@ function renderMap(data) {
   console.log(current_loc);
   // customize options
   var options = {
-    zoom: 14,
+    zoom: 12,
     center: current_loc,
   };
 
@@ -72,15 +72,11 @@ function renderMap(data) {
       title: shop.name,
     });
 
-    var shop_content;
-
-    shop.categories.forEach((cat) => {
-      var print;
-      shop_content += cat.title + ", ";
-    });
+    var shop_content = generateInfoWindowCard(shop);
 
     const infowindow = new google.maps.InfoWindow({
       content: shop_content.toString(),
+      maxWidth: "45%",
     });
 
     shop_marker.addListener("click", () => {
@@ -98,6 +94,150 @@ function renderMap(data) {
 
   CenterControl(centerControlDiv, map);
   map.controls[google.maps.ControlPosition.TOP_CENTER].push(centerControlDiv);
+}
+
+function generateInfoWindowContent(shop) {
+  var shop_content = "";
+  var categories = "\n<b>Categories:</b> ";
+  var image = '<img src="' + shop.image_url + '" class="responsive-img">';
+
+  shop.categories.forEach((cat) => {
+    categories += cat.title + ", ";
+  });
+
+  return shop_content + categories + image;
+}
+
+function generateInfoWindowCard(shop) {
+  console.log("shop");
+  console.log(shop);
+
+  var shop_content = '<div class="col s12 m8 offset-m2 border-red">';
+  shop_content += '<div class="card sticky-action border-red">';
+
+  var title =
+    '<h3 class="card-title info-window-header">' +
+    shop.name +
+    (shop.price ? " - " + shop.price : "") +
+    "</h3>";
+
+  var address = '<div class="card-text info-window-text">';
+  address +=
+    '<p class="mb-1">' +
+    (shop.is_closed
+      ? '<span style="color: red">Closed</span>'
+      : '<span style="color: green">Open</span>') +
+    "</p>";
+  address += '<address class="text-truncate mb-2 info-window-address">';
+  address +=
+    '<a title="Address map will open in a new tab" class="font-weight-bold" target="_blank" href="https://www.google.com/maps/dir/?api=1&amp;destination=' +
+    shop.coordinates.latitude +
+    "," +
+    shop.coordinates.longitude +
+    '">' +
+    shop.location.display_address +
+    "</a>";
+  address += "</address>";
+  address +=
+    '<a class="info-window-address" href="tel:' +
+    shop.phone +
+    '" title="Call ' +
+    shop.name +
+    '">' +
+    shop.display_phone +
+    "</a></div>";
+
+  var image = '<div class="card-image waves-effect waves-block waves-light">';
+  image +=
+    '<img src="' + shop.image_url + '" class="activator responsive-img">';
+  image += "</div>";
+
+  var card_content = '<div class="card-content">';
+  card_content +=
+    '<span class="card-title activator grey-text text-darken-4">' +
+    Math.round(shop.distance / 1609, 1) +
+    ' miles away<i class="material-icons right">more_vert</i></span>';
+  card_content +=
+    '<p><a title="view more information on Yelp" target="_blank" href="' +
+    shop.url +
+    '">View on Yelp</a></p>';
+  card_content += "</div>";
+
+  var categories = '<div class="col s8 border-red">';
+  categories += '<span class="black-text">';
+
+  categories += "<b>Categories:</b> ";
+
+  shop.categories.forEach((cat) => {
+    categories += cat.title + ", ";
+  });
+
+  categories += "</span>";
+  categories += "</div>";
+
+  var card_reveal = '<div class="card-reveal">';
+  card_reveal +=
+    '<span class="card-title grey-text text-darken-4">More Information<i class="material-icons right">close</i></span>';
+  card_reveal += categories;
+  card_reveal += "</div>";
+
+  var card_action = '<div class="card-action">';
+  card_action +=
+    '<button class="btn waves-effect waves-light blue-grey">Review Count: ' +
+    shop.review_count +
+    "</button>";
+  card_action +=
+    '<button class="btn waves-effect waves-light blue-grey right">Rating: ' +
+    shop.rating +
+    "</button>";
+  card_action += "</div>";
+
+  // var card_action = '<div class="card-action">';
+  // card_action +=
+  //   '<button class="btn waves-effect waves-light blue-grey"><i class="material-icons">share</i></button>';
+  // card_action +=
+  //   '<a class="right blue-grey-text" href="http://www.tutorialspoint.com">www.tutorialspoint.com</a>';
+  // card_action += "</div>";
+
+  // append all sections
+  shop_content +=
+    title + address + image + card_content + card_reveal + card_action;
+
+  // close div tags
+  shop_content += "</div></div></div>";
+
+  return shop_content;
+}
+
+function generateInfoWindowCardPanel(shop) {
+  var shop_content = '<div class="col s12 border-red">';
+  shop_content +=
+    '<div class="card-panel border-red grey lighten-5 z-depth-1">';
+  shop_content += '<div class="row info-window-row ">';
+
+  var image = '<div class="col s4 border-red">';
+  image += '<img src="' + shop.image_url + '" class=" responsive-img">';
+  image += "</div>";
+
+  var categories = '<div class="col s8 border-red">';
+  categories += '<span class="black-text info-window-text">';
+
+  categories += "<b>Categories:</b> ";
+
+  shop.categories.forEach((cat) => {
+    categories += cat.title + ", ";
+  });
+
+  categories += "</span>";
+  categories += "</div>";
+
+  // append all sections
+  shop_content += image + categories;
+
+  // close div tags
+  shop_content += "   </div></div></div>";
+
+  return shop_content;
 }
 
 function toggleBounce(event) {
