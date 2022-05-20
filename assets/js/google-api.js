@@ -44,7 +44,7 @@ var newBusinesses = data.businesses.filter(shop => {
   } else if (numberReviews.value == 101){
     isReviewCount = shop.review_count > 100 
   } else {
-    isReviewCount = true
+    isReviewCount = shop.review_count > 25 && shop.review_count < 100
   }
   return shop.price === price && shop.rating >= rate && isReviewCount
 })
