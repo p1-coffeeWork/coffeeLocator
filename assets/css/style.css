@@ -6,10 +6,28 @@ body {
   
  }
 
+ .title {
+  font-family: 'Pacifico', serif;
+  font-size: 72px;
+  text-align: center;
+  color:white;
+ }
+
+ 
+ .modalp{
+   display: flex;
+   justify-content: center;
+   color:white;
+   font-size: 20px;
+ }
 /* 
  * Always set the map height explicitly to define the size of the div element
  * that contains the map. 
  */
+
+
+
+
 #map {
   height: 80vh !important;
   width: 100%;

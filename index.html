@@ -4,10 +4,15 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pacifico">
+
   <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
-    />    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+    />   
+
     <link rel="stylesheet" href="./assets/css/style.css" />
 </head>
 
@@ -15,8 +20,8 @@
 
     <header>
         <nav>
-            <div class="nav-wrapper teal">
-                <a href="#" class="brand-logo center">Coffee Shop!</a>
+            <div class="nav-wrapper deep-orange darken-4">
+                <a href="#" class="brand-logo center title">Coffee Shop!</a>
                 <ul id="nav-mobile" class="left hide-on-med-and-down">
                     <li><a href="#">Coffee In</a></li>
                     <li><a href="#">Coffee Out</a></li>
@@ -27,17 +32,19 @@
     </header>
     <!-- Modal Trigger -->
     <div style="display: flex; justify-content: center">
-        <button id="map-link" class="waves-effect waves-light btn teal darken-4" style="margin: 2px">
+        <button id="map-link" class="waves-effect waves-light btn  cyan darken-2" style="margin: 2px">
             Map
         </button>
-        <a class="waves-effect waves-light btn modal-trigger teal darken-4" style="margin: 2px" href="#modal1">Find Your
+        <a class="waves-effect waves-light btn modal-trigger  cyan darken-2" style="margin: 2px" href="#modal1">Find Your
             Shop</a>
     </div>
     <!-- Modal Structure -->
     <div id="modal1" class="modal">
         <div class="modal-content">
-            <h4>Welcome to Coffee Shop!</h4>
-            <p>What kind of coffee shop are you looking for today?</p>
+            <div class="card deep-orange darken-4">
+            <h4 class="title">Welcome to Coffee Shop!</h4>
+            <p class="modalp">What kind of coffee shop are you looking for today?</p>
+            </div>
             <form action="#">
 
                 <div class="input-field col s12" id="price-param">
@@ -70,7 +77,7 @@
                     <label>Number of Ratings</label>
                 </div>
                 <div class="modal-footer">
-                    <button class="modal-close waves-effect waves-green btn-flat" id="submit-btn">Submit</button>
+                    <button class="modal-close waves-effect cyan darken-2 btn-flat" style="color:white" id="submit-btn">Submit</button>
                 </div>
             </form>
         </div>
@@ -79,7 +86,7 @@
         <div class="col s12 m3">
             <div class="card blue-grey darken-1">
                 <div class="card-content white-text">
-                    <span class="card-title">Coffee Shops Near You</span>
+                    <span class="card-title title">Coffee Shops Near You</span>
                     <ul>
                         <li></li>
                     </ul>
