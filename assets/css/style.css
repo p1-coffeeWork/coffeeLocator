@@ -26,7 +26,9 @@ body {
  */
 
 
- #map {
+
+
+#map {
   height: 80vh !important;
   width: 100%;
   padding: 0 150px 200px;
@@ -62,7 +64,6 @@ body {
   font-weight: bold !important;
   text-align: center;
 }
-
 .mb-1 {
   margin-bottom: 1.5rem !important;
 }
