@@ -27,10 +27,11 @@ if ("geolocation" in navigator) {
   var price = ""
   var rate = ""
   var reviewNumber = ""
+  var submitButton = document.querySelector("#submit-btn")
 
-  priceRange.addEventListener("change",function(event){
+  submitButton.addEventListener("click",function(event){
     event.preventDefault()
-    price = this.value
+    price = priceRange.value
   })
   rating.addEventListener("change",function(event){
     event.preventDefault()
@@ -55,7 +56,7 @@ if ("geolocation" in navigator) {
           term: "coffee",
           latitude: position.coords.latitude,
           longitude: position.coords.longitude,
-          price: 3,
+          price: [1,2,3]
         });
         fetch(`${cors_anywhere_url}/${yelp_search_url}?${queryParams}`, {
           headers: { Authorization: token },

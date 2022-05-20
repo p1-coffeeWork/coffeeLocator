@@ -35,8 +35,12 @@ function renderMap(data) {
   console.log(data);
   console.log(price,rate,reviewNumber);
 
-var newBusinesses = data.businesses.filter(shop => shop.price === price || shop.rating === rate)
-console.log(data)
+// var newBusinesses = data.businesses.filter(shop => shop.price === price || shop.rating === rate)
+var newBusinesses = data.businesses.filter(shop => {
+
+  return shop.price === price && shop.rating >= rate
+})
+
 data.businesses = newBusinesses
 
   current_loc = {
