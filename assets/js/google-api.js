@@ -37,8 +37,16 @@ function renderMap(data) {
 
 // var newBusinesses = data.businesses.filter(shop => shop.price === price || shop.rating === rate)
 var newBusinesses = data.businesses.filter(shop => {
+  var isReviewCount = false
 
-  return shop.price === price && shop.rating >= rate
+  if (numberReviews.value == 25){
+    isReviewCount = shop.review_count < 25
+  } else if (numberReviews.value == 101){
+    isReviewCount = shop.review_count > 100 
+  } else {
+    isReviewCount = true
+  }
+  return shop.price === price && shop.rating >= rate && isReviewCount
 })
 
 data.businesses = newBusinesses
