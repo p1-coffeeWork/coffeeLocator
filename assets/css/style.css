@@ -1,3 +1,11 @@
+body {
+  background-image: url(../images/cacaoespresso-1.png);
+  background-size: cover;
+  background-position: center;
+  min-height: 1000px;
+  
+ }
+
 /* 
  * Always set the map height explicitly to define the size of the div element
  * that contains the map. 
@@ -38,7 +46,6 @@
   font-weight: bold !important;
   text-align: center;
 }
-
 .mb-1 {
   margin-bottom: 1.5rem !important;
 }
@@ -75,3 +82,4 @@ body {
 .border-green {
   border: 1px solid green;
 }
+
