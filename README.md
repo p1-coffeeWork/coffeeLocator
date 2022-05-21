@@ -1,4 +1,5 @@
-# ![Coffee Locator](./assets/images/logo.png)
+![image](https://user-images.githubusercontent.com/60792525/169652040-b50eb6ad-7563-4527-add6-0fa811ec0302.png)
+
 
 # Coffee Shop
 
