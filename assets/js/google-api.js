@@ -94,7 +94,11 @@ function renderMap(data) {
         // Close the info window
         infoWindow.close();
         infoWindowIsClosed = true;
-      } //else {
+
+        // if (infoWindow.getAnchor() === shop_marker) {
+        //   return;
+        // }
+      }
       infoWindowIsClosed = false;
 
       //Set the new content
@@ -103,13 +107,13 @@ function renderMap(data) {
         maxWidth: screen.width,
       });
 
+      infoWindow.setAnchor(shop_marker);
       //Open the infowindow
       infoWindow.open({
         anchor: shop_marker,
         map,
         shouldFocus: true,
       });
-      //}
     });
   });
 
