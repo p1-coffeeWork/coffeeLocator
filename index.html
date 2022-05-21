@@ -1,107 +1,108 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Pacifico"
-    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pacifico" />
 
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 
     <link rel="stylesheet" href="./assets/css/style.css" />
-  </head>
+</head>
 
-  <body>
+<body>
     <header>
-      <nav>
-        <div class="nav-wrapper deep-orange darken-4">
-          <a href="#" class="brand-logo center title">Coffee Shop!</a>
-          <ul id="nav-mobile" class="left hide-on-med-and-down">
-            <li><a href="#">Coffee In</a></li>
-            <li><a href="#">Coffee Out</a></li>
-          </ul>
-        </div>
-      </nav>
+        <nav>
+            <div class="nav-wrapper deep-orange darken-4">
+                <a href="#" class="brand-logo center title">Coffee Shop!</a>
+                <ul id="nav-mobile" class="left hide-on-med-and-down">
+                    <li><a href="hot.html">Hot Coffee</a></li>
+                    <li><a href="cold.html">Cold Coffee</a></li>
+                </ul>
+            </div>
+        </nav>
     </header>
     <!-- Modal Trigger -->
     <div style="display: flex; justify-content: center">
+        <a class="waves-effect waves-light btn-large modal-trigger cyan darken-2" style="margin: 2px"
+            href="#modal2">Make Coffee at Home</a>
 
-        <button id="map-link" class="waves-effect waves-light btn  cyan darken-2" style="margin: 2px">
-            Coffee at Home
-        </button>
-        <a class="waves-effect waves-light btn modal-trigger  cyan darken-2" style="margin: 2px" href="#modal1">Coffee around Town</a>
-
+        <a class="waves-effect waves-light btn-large modal-trigger  cyan darken-2" style="margin: 2px"
+            href="#modal1">Find Coffee around Town</a>
     </div>
     <!-- Modal Structure -->
     <div id="modal1" class="modal">
-      <div class="modal-content">
-        <div class="card deep-orange darken-4">
-          <h4 class="title">Welcome to Coffee Shop!</h4>
-          <p class="modalp">
-            What kind of coffee shop are you looking for today?
-          </p>
+        <div class="modal-content">
+            <div class="card deep-orange darken-4">
+                <h4 class="title">Welcome to Coffee Shop!</h4>
+                <p class="modalp">
+                    What kind of coffee shop are you looking for today?
+                </p>
+            </div>
+            <form action="#">
+                <div class="input-field col s12" id="price-param">
+                    <select id="price-range">
+                        <option value="" disabled selected>Choose your option</option>
+                        <option value="$">$</option>
+                        <option value="$$">$$</option>
+                        <option value="$$$">$$$</option>
+                    </select>
+                    <label>Price Range</label>
+                </div>
+                <div class="input-field col s12">
+                    <select id="rating">
+                        <option value="" disabled selected>Choose your option</option>
+                        <option value="1">1 Star</option>
+                        <option value="2">2 Stars</option>
+                        <option value="3">3 Stars</option>
+                        <option value="4">4 Stars</option>
+                        <option value="5">5 Stars</option>
+                    </select>
+                    <label>Coffee Shop Rating</label>
+                </div>
+                <div class="input-field col s12">
+                    <select id="number-of-reviews">
+                        <option value="" disabled selected>Choose your option</option>
+                        <option value="101">greater than 100</option>
+                        <option value="100">25-100</option>
+                        <option value="25">Less than 25</option>
+                    </select>
+                    <label>Number of Reviews</label>
+                </div>
+                <div class="modal-footer">
+                    <button class="modal-close waves-effect cyan darken-2 btn-flat" style="color: white"
+                        id="submit-btn">
+                        Submit
+                    </button>
+                </div>
+            </form>
         </div>
-        <form action="#">
-          <div class="input-field col s12" id="price-param">
-            <select id="price-range">
-              <option value="" disabled selected>Choose your option</option>
-              <option value="$">$</option>
-              <option value="$$">$$</option>
-              <option value="$$$">$$$</option>
-            </select>
-            <label>Price Range</label>
-          </div>
-          <div class="input-field col s12">
-            <select id="rating">
-              <option value="" disabled selected>Choose your option</option>
-              <option value="1">1 Star</option>
-              <option value="2">2 Stars</option>
-              <option value="3">3 Stars</option>
-              <option value="4">4 Stars</option>
-              <option value="5">5 Stars</option>
-            </select>
-            <label>Coffee Shop Rating</label>
-          </div>
-          <div class="input-field col s12">
-            <select id="number-of-reviews">
-              <option value="" disabled selected>Choose your option</option>
-              <option value="101">greater than 100</option>
-              <option value="100">25-100</option>
-              <option value="25">Less than 25</option>
-            </select>
-            <label>Number of Ratings</label>
-          </div>
-          <div class="modal-footer">
-            <button
-              class="modal-close waves-effect cyan darken-2 btn-flat"
-              style="color: white"
-              id="submit-btn"
-            >
-              Submit
-            </button>
-          </div>
-        </form>
-      </div>
     </div>
-    <div class="row">
-      <div class="col s12 m12">
-        <h1 class="title">Coffee Shops Near You</h1>
-      </div>
+
+    <!--Modal 2 structure-->
+    <div id="modal2" class="modal">
+        <div class="modal-content">
+            <div class="card deep-orange darken-4">
+                <h4 class="title">Pick your Preference</h4>
+            </div>
+        </div>
+        <div class="modal-btn">
+            <a class="waves-effect waves-light btn-large" href="cold.html">Iced Coffee</a>
+            <a class="waves-effect waves-light btn-large" href="hot.html">Hot Coffee</a>
+        </div>
+    
+    <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
     </div>
+    </div>
+
     <div class="row">
-      <div class="col s12 m10 offset-m1 map">
-        <div id="map"></div>
-      </div>
+        <div class="col s12 map">
+            <div id="map"></div>
+        </div>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -111,10 +112,10 @@
     <script src="./assets/js/materialize.js"></script>
     <script src="./assets/js/google-api.js"></script>
     <script src="./assets/js/yelp.js"></script>
-    
+
 </body>
 
 </html>
-  </body>
-</html>
+</body>
 
+</html>
