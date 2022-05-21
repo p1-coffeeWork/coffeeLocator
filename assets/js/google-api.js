@@ -1,24 +1,23 @@
 // Api Key for Google Maps AIzaSyBtc9LwjWT-8vxEDwPyfs2a-H6D6aQmoLU
-// My current location
-var center_marker;
-var infoWindow;
-var infoWindowIsClosed = true;
 
+var center_marker; // My current location
+var infoWindow;
+var infoWindowIsClosed = true; // Tracks the state of the info window
+
+// Sample location for testing
 var current_loc = {
   name: "My Place",
   lat: 41.87396088943666,
   lng: -87.95070683026313,
 };
 
+// Renders google map after modal is submitted
 function renderMap(data) {
-  console.log("yelp data");
-  console.log(data);
-  console.log(price, rate, reviewNumber);
+  console.log("yelp data", data);
 
-  //Reset for a new data set
   infoWindowIsClosed = true;
 
-  // var newBusinesses = data.businesses.filter(shop => shop.price === price || shop.rating === rate)
+  // filter based on modal params
   var newBusinesses = data.businesses.filter((shop) => {
     var isValid = true;
 
@@ -49,14 +48,14 @@ function renderMap(data) {
     lng: data.region.center.longitude,
   };
 
-  console.log(current_loc);
-  // customize options
+  console.log("current location: ", current_loc);
+  // customize map options
   var options = {
     zoom: 12,
     center: current_loc,
   };
 
-  // map
+  // map object
   var map = new google.maps.Map(document.querySelector("#map"), options);
 
   //Center the map
@@ -94,10 +93,6 @@ function renderMap(data) {
         // Close the info window
         infoWindow.close();
         infoWindowIsClosed = true;
-
-        // if (infoWindow.getAnchor() === shop_marker) {
-        //   return;
-        // }
       }
       infoWindowIsClosed = false;
 
@@ -108,6 +103,7 @@ function renderMap(data) {
       });
 
       infoWindow.setAnchor(shop_marker);
+
       //Open the infowindow
       infoWindow.open({
         anchor: shop_marker,
@@ -241,7 +237,7 @@ function CenterControl(controlDiv, map) {
   // Set CSS for the control border.
   const controlUI = document.createElement("div");
 
-  controlUI.style.backgroundColor = "#22c7c6";
+  controlUI.style.backgroundColor = "#0097a7";
   controlUI.style.border = "2px solid #fff";
   controlUI.style.borderRadius = "3px";
   controlUI.style.boxShadow = "0 2px 6px rgba(0,0,0,.3)";
@@ -261,7 +257,7 @@ function CenterControl(controlDiv, map) {
   controlText.style.lineHeight = "38px";
   controlText.style.paddingLeft = "5px";
   controlText.style.paddingRight = "5px";
-  controlText.innerHTML = "re-center your map";
+  controlText.innerHTML = "Re-center map";
   controlUI.appendChild(controlText);
   // Setup the click event listeners: simply set the map to Chicago.
   controlUI.addEventListener("click", () => {
