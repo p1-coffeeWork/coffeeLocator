@@ -2,31 +2,26 @@ body {
   background-image: url(../images/cacaoespresso-1.png);
   background-size: cover;
   background-position: center;
-  min-height: 1000px;
-  
- }
+  min-height: 100vh;
+}
 
- .title {
-  font-family: 'Pacifico', serif;
-  font-size: 72px;
+.title {
+  font-family: "Pacifico", serif;
+  font-size: 48px;
   text-align: center;
-  color:white;
- }
+  color: white;
+}
 
- 
- .modalp{
-   display: flex;
-   justify-content: center;
-   color:white;
-   font-size: 20px;
- }
+.modalp {
+  display: flex;
+  justify-content: center;
+  color: white;
+  font-size: 20px;
+}
 /* 
  * Always set the map height explicitly to define the size of the div element
  * that contains the map. 
  */
-
-
-
 
 #map {
   height: 80vh !important;
@@ -35,7 +30,7 @@ body {
 }
 
 .row {
-  height: 100vh !important;
+  /* height: 100vh !important; */
   margin-bottom: 0px !important;
   padding: 20px 20px;
 }
@@ -46,7 +41,7 @@ body {
 }
 
 .info-window-text {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-family: sans-serif;
   font-weight: bold;
 }
@@ -60,9 +55,14 @@ body {
 }
 
 .info-window-header {
-  font-size: 2rem !important;
+  font-size: 1.3rem !important;
   font-weight: bold !important;
   text-align: center;
+}
+
+.info-window-img {
+  width: 75% !important;
+  height: 75% !important;
 }
 .mb-1 {
   margin-bottom: 1.5rem !important;
@@ -101,3 +101,7 @@ body {
   border: 1px solid green;
 }
 
+.responsive-img {
+  width: 100%;
+  height: auto;
+}

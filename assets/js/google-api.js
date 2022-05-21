@@ -1,7 +1,8 @@
 // Api Key for Google Maps AIzaSyBtc9LwjWT-8vxEDwPyfs2a-H6D6aQmoLU
 // My current location
-// TODO: Ethan to provide current location
 var center_marker;
+var infoWindow;
+var infoWindowIsClosed = true;
 
 var current_loc = {
   name: "My Place",
@@ -9,47 +10,39 @@ var current_loc = {
   lng: -87.95070683026313,
 };
 
-// TODO: Ethan to provide global array for shop locations
-var shop_locs = [
-  { name: "shop-1", lat: 41.87396088943666, lng: -87.95070683026313 },
-  { name: "shop-2", lat: 41.87421, lng: -87.950763 },
-  { name: "shop-3", lat: 41.877929, lng: -87.949245 },
-  { name: "shop-4", lat: 41.875831, lng: -87.94628 },
-];
-
-// function updateCurrentLocation() {
-//   if (navigator.geolocation) {
-//     navigator.geolocation.getCurrentPosition((position) => {
-//       current_loc = {
-//         lat: position.coords.latitude,
-//         lng: position.coords.longitude,
-//       };
-//       console.log("updateCurrentLocation-loc: ");
-//       console.log(current_loc);
-//     });
-//   }
-// }
-
 function renderMap(data) {
   console.log("yelp data");
   console.log(data);
-  console.log(price,rate,reviewNumber);
+  console.log(price, rate, reviewNumber);
 
-// var newBusinesses = data.businesses.filter(shop => shop.price === price || shop.rating === rate)
-var newBusinesses = data.businesses.filter(shop => {
-  var isReviewCount = false
+  //Reset for a new data set
+  infoWindowIsClosed = true;
 
-  if (numberReviews.value == 25){
-    isReviewCount = shop.review_count < 25
-  } else if (numberReviews.value == 101){
-    isReviewCount = shop.review_count > 100 
-  } else {
-    isReviewCount = shop.review_count > 25 && shop.review_count < 100
-  }
-  return shop.price === price && shop.rating >= rate && isReviewCount
-})
+  // var newBusinesses = data.businesses.filter(shop => shop.price === price || shop.rating === rate)
+  var newBusinesses = data.businesses.filter((shop) => {
+    var isValid = true;
 
-data.businesses = newBusinesses
+    // This allows user to select a subset of filters
+    if (price && isValid) {
+      isValid = shop.price === price;
+    }
+    if (rate && isValid) {
+      isValid = shop.rating >= rate;
+    }
+    if (numberReviews.value && isValid) {
+      if (numberReviews.value == 25) {
+        isValid = shop.review_count < 25;
+      } else if (numberReviews.value == 101) {
+        isValid = shop.review_count > 100;
+      } else {
+        isValid = shop.review_count > 25 && shop.review_count < 100;
+      }
+    }
+
+    return isValid;
+  });
+
+  data.businesses = newBusinesses;
 
   current_loc = {
     lat: data.region.center.latitude,
@@ -79,9 +72,9 @@ data.businesses = newBusinesses
 
   // The marker, positioned at center
   // only return the top 10 records
-console.log(data.businesses)
+  console.log(data.businesses);
   data.businesses.forEach((shop) => {
-    console.log(shop.coordinates.latitude,shop.coordinates.longitude)
+    console.log(shop.coordinates.latitude, shop.coordinates.longitude);
     const shop_marker = new google.maps.Marker({
       position: {
         lat: shop.coordinates.latitude,
@@ -95,16 +88,31 @@ console.log(data.businesses)
 
     var shop_content = generateInfoWindowCard(shop);
 
-    const infowindow = new google.maps.InfoWindow({
-      content: shop_content.toString(),
-      maxWidth: "45%",
-    });
-
     shop_marker.addListener("click", () => {
-      infowindow.open({
+      // Do the check
+      if (infoWindow && !infoWindowIsClosed) {
+        // Close the info window
+        infoWindow.close();
+        infoWindowIsClosed = true;
+
+        // if (infoWindow.getAnchor() === shop_marker) {
+        //   return;
+        // }
+      }
+      infoWindowIsClosed = false;
+
+      //Set the new content
+      infoWindow = new google.maps.InfoWindow({
+        content: shop_content.toString(),
+        maxWidth: screen.width,
+      });
+
+      infoWindow.setAnchor(shop_marker);
+      //Open the infowindow
+      infoWindow.open({
         anchor: shop_marker,
         map,
-        shouldFocus: false,
+        shouldFocus: true,
       });
     });
   });
@@ -117,27 +125,16 @@ console.log(data.businesses)
   map.controls[google.maps.ControlPosition.TOP_CENTER].push(centerControlDiv);
 }
 
-function generateInfoWindowContent(shop) {
-  var shop_content = "";
-  var categories = "\n<b>Categories:</b> ";
-  var image = '<img src="' + shop.image_url + '" class="responsive-img">';
-
-  shop.categories.forEach((cat) => {
-    categories += cat.title + ", ";
-  });
-
-  return shop_content + categories + image;
-}
-
 function generateInfoWindowCard(shop) {
   console.log("shop");
   console.log(shop);
 
-  var shop_content = '<div class="col s12 m8 offset-m2 border-red">';
-  shop_content += '<div class="card sticky-action border-red">';
+  var shop_content = '<div class="col s12 border-red">';
+  shop_content +=
+    '<div class="card sticky-action border-red" style="padding: 10px">';
 
   var title =
-    '<h3 class="card-title info-window-header">' +
+    '<h3 class="card-title info-window-header truncate">' +
     shop.name +
     (shop.price ? " - " + shop.price : "") +
     "</h3>";
@@ -149,7 +146,7 @@ function generateInfoWindowCard(shop) {
       ? '<span style="color: red">Closed</span>'
       : '<span style="color: green">Open</span>') +
     "</p>";
-  address += '<address class="text-truncate mb-2 info-window-address">';
+  address += '<address class="truncate mb-2 info-window-address">';
   address +=
     '<a title="Address map will open in a new tab" class="font-weight-bold" target="_blank" href="https://www.google.com/maps/dir/?api=1&amp;destination=' +
     shop.coordinates.latitude +
@@ -160,7 +157,7 @@ function generateInfoWindowCard(shop) {
     "</a>";
   address += "</address>";
   address +=
-    '<a class="info-window-address" href="tel:' +
+    '<a class="info-window-address truncate" href="tel:' +
     shop.phone +
     '" title="Call ' +
     shop.name +
@@ -170,24 +167,27 @@ function generateInfoWindowCard(shop) {
 
   var image = '<div class="card-image waves-effect waves-block waves-light">';
   image +=
-    '<img src="' + shop.image_url + '" class="activator responsive-img">';
+    '<img src="' +
+    shop.image_url +
+    '" class="activator responsive-img info-window-img" style="margin: 10px">';
   image += "</div>";
 
-  var card_content = '<div class="card-content">';
+  var card_content =
+    '<div class="card-content" style="padding: 0px !important">';
   card_content +=
-    '<span class="card-title activator grey-text text-darken-4">' +
+    '<span class="card-title activator grey-text text-darken-4 truncate">' +
     Math.round(shop.distance / 1609, 1) +
-    ' miles away<i class="material-icons right">more_vert</i></span>';
+    ' mile(s) away<i class="material-icons right">more_vert</i></span>'; // convert distance from meters to miles
   card_content +=
-    '<p><a title="view more information on Yelp" target="_blank" href="' +
+    '<span class="card-title activator grey-text text-darken-4 truncate"><a title="view more information on Yelp" target="_blank" href="' +
     shop.url +
-    '">View on Yelp</a></p>';
+    '">View on Yelp</a></span>';
   card_content += "</div>";
 
-  var categories = '<div class="col s8 border-red">';
+  var categories = '<div class="col s12 border-red">';
   categories += '<span class="black-text">';
 
-  categories += "<b>Categories:</b> ";
+  categories += '<b style="font-size=14">Categories:</b> ';
 
   shop.categories.forEach((cat) => {
     categories += cat.title + ", ";
@@ -198,27 +198,20 @@ function generateInfoWindowCard(shop) {
 
   var card_reveal = '<div class="card-reveal">';
   card_reveal +=
-    '<span class="card-title grey-text text-darken-4">More Information<i class="material-icons right">close</i></span>';
+    '<span class="card-title grey-text text-darken-4 text-truncate info-window-header">More Information<i class="material-icons right">close</i></span>';
   card_reveal += categories;
   card_reveal += "</div>";
 
   var card_action = '<div class="card-action">';
   card_action +=
-    '<button class="btn waves-effect waves-light blue-grey">Review Count: ' +
+    '<button class="btn waves-effect waves-light blue-grey col s12 m4 left">Review Count: ' +
     shop.review_count +
     "</button>";
   card_action +=
-    '<button class="btn waves-effect waves-light blue-grey right">Rating: ' +
+    '<button class="btn waves-effect waves-light blue-grey right col s12 m4 offset-m2">Rating: ' +
     shop.rating +
     "</button>";
   card_action += "</div>";
-
-  // var card_action = '<div class="card-action">';
-  // card_action +=
-  //   '<button class="btn waves-effect waves-light blue-grey"><i class="material-icons">share</i></button>';
-  // card_action +=
-  //   '<a class="right blue-grey-text" href="http://www.tutorialspoint.com">www.tutorialspoint.com</a>';
-  // card_action += "</div>";
 
   // append all sections
   shop_content +=
@@ -226,37 +219,6 @@ function generateInfoWindowCard(shop) {
 
   // close div tags
   shop_content += "</div></div></div>";
-
-  return shop_content;
-}
-
-function generateInfoWindowCardPanel(shop) {
-  var shop_content = '<div class="col s12 border-red">';
-  shop_content +=
-    '<div class="card-panel border-red grey lighten-5 z-depth-1">';
-  shop_content += '<div class="row info-window-row ">';
-
-  var image = '<div class="col s4 border-red">';
-  image += '<img src="' + shop.image_url + '" class=" responsive-img">';
-  image += "</div>";
-
-  var categories = '<div class="col s8 border-red">';
-  categories += '<span class="black-text info-window-text">';
-
-  categories += "<b>Categories:</b> ";
-
-  shop.categories.forEach((cat) => {
-    categories += cat.title + ", ";
-  });
-
-  categories += "</span>";
-  categories += "</div>";
-
-  // append all sections
-  shop_content += image + categories;
-
-  // close div tags
-  shop_content += "   </div></div></div>";
 
   return shop_content;
 }
@@ -279,7 +241,7 @@ function CenterControl(controlDiv, map) {
   // Set CSS for the control border.
   const controlUI = document.createElement("div");
 
-  controlUI.style.backgroundColor = "blue";
+  controlUI.style.backgroundColor = "#22c7c6";
   controlUI.style.border = "2px solid #fff";
   controlUI.style.borderRadius = "3px";
   controlUI.style.boxShadow = "0 2px 6px rgba(0,0,0,.3)";
@@ -299,12 +261,10 @@ function CenterControl(controlDiv, map) {
   controlText.style.lineHeight = "38px";
   controlText.style.paddingLeft = "5px";
   controlText.style.paddingRight = "5px";
-  controlText.innerHTML = "Center Map";
+  controlText.innerHTML = "re-center your map";
   controlUI.appendChild(controlText);
   // Setup the click event listeners: simply set the map to Chicago.
   controlUI.addEventListener("click", () => {
     map.setCenter(current_loc);
   });
 }
-
-//renderMap(yelp_data);
