@@ -115,3 +115,15 @@ body {
 .btn-large {
   margin: 1rem;
 }
+
+.card-title {
+  display: flex;
+  justify-content: center;
+  font-family: 'Quicksand', sans-serif;
+  text-align: center;
+}
+
+.cardp {
+  display: flex;
+  justify-content: center;
+}
