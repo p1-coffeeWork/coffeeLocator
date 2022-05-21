@@ -1,6 +1,6 @@
 ![Coffee Locator](./assets/images/logo.png)
 
-# Coffee Locator
+# Coffee Shop
 
 <table>
 <tr>
