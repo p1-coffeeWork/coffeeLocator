@@ -59,6 +59,11 @@ body {
   font-weight: bold !important;
   text-align: center;
 }
+
+.info-window-img {
+  width: 75% !important;
+  height: 75% !important;
+}
 .mb-1 {
   margin-bottom: 1.5rem !important;
 }

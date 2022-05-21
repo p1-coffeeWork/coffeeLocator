@@ -94,22 +94,22 @@ function renderMap(data) {
         // Close the info window
         infoWindow.close();
         infoWindowIsClosed = true;
-      } else {
-        infoWindowIsClosed = false;
+      } //else {
+      infoWindowIsClosed = false;
 
-        //Set the new content
-        infoWindow = new google.maps.InfoWindow({
-          content: shop_content.toString(),
-          maxWidth: screen.width,
-        });
+      //Set the new content
+      infoWindow = new google.maps.InfoWindow({
+        content: shop_content.toString(),
+        maxWidth: screen.width,
+      });
 
-        //Open the infowindow
-        infoWindow.open({
-          anchor: shop_marker,
-          map,
-          shouldFocus: true,
-        });
-      }
+      //Open the infowindow
+      infoWindow.open({
+        anchor: shop_marker,
+        map,
+        shouldFocus: true,
+      });
+      //}
     });
   });
 
@@ -126,7 +126,8 @@ function generateInfoWindowCard(shop) {
   console.log(shop);
 
   var shop_content = '<div class="col s12 border-red">';
-  shop_content += '<div class="card sticky-action border-red">';
+  shop_content +=
+    '<div class="card sticky-action border-red" style="padding: 10px">';
 
   var title =
     '<h3 class="card-title info-window-header truncate">' +
@@ -162,10 +163,13 @@ function generateInfoWindowCard(shop) {
 
   var image = '<div class="card-image waves-effect waves-block waves-light">';
   image +=
-    '<img src="' + shop.image_url + '" class="activator responsive-img">';
+    '<img src="' +
+    shop.image_url +
+    '" class="activator responsive-img info-window-img" style="margin: 10px">';
   image += "</div>";
 
-  var card_content = '<div class="card-content">';
+  var card_content =
+    '<div class="card-content" style="padding: 0px !important">';
   card_content +=
     '<span class="card-title activator grey-text text-darken-4 truncate">' +
     Math.round(shop.distance / 1609, 1) +
