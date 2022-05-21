@@ -1,3 +1,15 @@
-.navbar {
-    background-color:#8ac7bb;
-}
+body {
+    background-image: url(../images/cacaoespresso-1.png);
+    background-size: cover;
+    background-position: center;
+    min-height: 1000px;
+    
+   }
+
+.card-title {
+    font-family: 'Pacifico', serif;
+    font-size: 72px;
+    text-align: center;
+    color:white;
+   }
+

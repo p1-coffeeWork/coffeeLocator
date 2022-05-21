@@ -1,12 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pacifico">
+    <link rel="stylesheet" href="./assets/css/materialize.css">
+    <title>Iced Coffee Recipes</title>
 </head>
+
 <body>
+    <nav>
+        <div class="nav-wrapper deep-orange darken-4">
+            <a href="#" class="brand-logo center card-title">Coffee at Home</a>
+            <ul id="nav-mobile" class="left hide-on-med-and-down">
+                <li><a href="index.html">Home</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="card medium col s4">
+                <div class="card-image waves-effect waves-block waves-light">
+                    <img class="activator" src="./assets/images/icedcoffee.jpg">
+                </div>
+                <div class="card-content">
+                    <h2 class="card-title activator grey-text text-darken-4" id="title1"></h2>
+
+                </div>
+                <div class="card-reveal">
+
+                    <h2 class="card-title grey-text text-darken-4"><i class="material-icons right">x</i></h2>
+                    <p id="description1"></p>
+                    <h5 class="ingredients">Ingredients:</h5>
+                    <ul>
+                        <li id="ingredient1"></li>
+                        <li id="ingredient2"></li>
+                        <li id="ingredient3"></li>
+                        <li id="ingredient4"></li>
+                    </ul>
+                </div>
+            </div>
+
+
+            <div class="card medium col s4">
+                <div class="card-image waves-effect waves-block waves-light">
+                    <img class="activator" src="./assets/images/icedEspresso.jpg">
+                </div>
+                <div class="card-content">
+                    <h2 class="card-title activator grey-text text-darken-4" id="title2"></h2>
+                </div>
+                <div class="card-reveal">
+                    <h2 class="card-title grey-text text-darken-4"><i class="material-icons right">x</i></h2>
+                    <p id="description2"></p>
+                    <h5 class="ingredients">Ingredients:</h5>
+                    <ul>
+                        <li id="ingredient5"></li>
+                        <li id="ingredient6"></li>
+                        <li id="ingredient7"></li>
+                        <li id="ingredient8"></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card medium col s4">
+                <div class="card-image waves-effect waves-block waves-light">
+                    <img class="activator" src="./assets/images/coldBrew.jpg">
+                </div>
+                <div class="card-content">
+                    <h2 class="card-title activator grey-text text-darken-4" id="title3"></h2>
+                </div>
+                <div class="card-reveal">
+                    <h2 class="card-title grey-text text-darken-4"><i class="material-icons right">x</i></h2>
+                    <p id="description3"></p>
+                    <h5 class="ingredients">Ingredients:</h5>
+                    <ul>
+                        <li id="ingredient9"></li>
+                        <li id="ingredient10"></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card medium col s4">
+                <div class="card-image waves-effect waves-block waves-light">
+                    <img class="activator" src="./assets/images/frap.jpg">
+                </div>
+                <div class="card-content">
+                    <h2 class="card-title activator grey-text text-darken-4" id="title4"></h2>
+                </div>
+                <div class="card-reveal">
+                    <h2 class="card-title grey-text text-darken-4"><i class="material-icons right">x</i></h2>
+                    <p id="description4"></p>
+                    <h5 class="ingredients">Ingredients:</h5>
+                    <ul>
+                        <li id="ingredient11"></li>
+                        <li id="ingredient12"></li>
+                        <li id="ingredient13"></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card medium col s4">
+                <div class="card-image waves-effect waves-block waves-light">
+                    <img class="activator" src="./assets/images/nitro.jpg">
+                </div>
+                <div class="card-content">
+                    <h2 class="card-title activator grey-text text-darken-4" id="title5"></h2>
+                </div>
+                <div class="card-reveal">
+                    <h2 class="card-title grey-text text-darken-4"><i class="material-icons right">x</i></h2>
+                    <p id="description5"></p>
+                    <h5 class="ingredients">Ingredients:</h5>
+                    <ul>
+                        <li id="ingredient14"></li>
+                        <li id="ingredient15"></li>
+                        <li id="ingredient16"></li>
+                        <li id="ingredient17"></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card medium col s4">
+                <div class="card-image waves-effect waves-block waves-light">
+                    <img class="activator" src="./assets/images/maza.jpg">
+                </div>
+                <div class="card-content">
+                    <h2 class="card-title activator grey-text text-darken-4" id="title6"></h2>
+                </div>
+                <div class="card-reveal">
+                    <h2 class="card-title grey-text text-darken-4"><i class="material-icons right">x</i></h2>
+                    <p id="description6"></p>
+                    <h5 class="ingredients">Ingredients:</h5>
+                    <ul>
+                        <li id="ingredient18"></li>
+                        <li id="ingredient19"></li>
+                        <li id="ingredient20"></li>
+                        <li id="ingredient21"></li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="./assets/js/coldCoffee.js"></script>
 </body>
+
 </html>
