@@ -3,44 +3,36 @@ var token =
 var cors_anywhere_url = "https://cors-anywhere-bc.herokuapp.com";
 var yelp_search_url = "https://api.yelp.com/v3/businesses/search";
 
-var yelp_data;
-
-function clientCallback() {
-  console.log("made it to the client callback");
-}
 var requestObj;
 if ("geolocation" in navigator) {
-  // var modalEl = document.querySelector("#submit-btn");
   var maplink = document.querySelector("#submit-btn");
 
   function handleYelpData(data) {
-    console.log(data);
-    //window.location = "./maps.html";
-    
-    // yelp_data = data;
+    console.log("Yelp data: ", data);
+
     renderMap(data);
-
   }
-  var priceRange = document.querySelector("#price-range")
-  var rating = document.querySelector("#rating")
-  var numberReviews = document.querySelector("#number-of-reviews")
-  var price = ""
-  var rate = ""
-  var reviewNumber = ""
-  var submitButton = document.querySelector("#submit-btn")
+  var priceRange = document.querySelector("#price-range");
+  var rating = document.querySelector("#rating");
+  var numberReviews = document.querySelector("#number-of-reviews");
+  var price = "";
+  var rate = "";
+  var reviewNumber = "";
+  var submitButton = document.querySelector("#submit-btn");
 
-  submitButton.addEventListener("click",function(event){
-    event.preventDefault()
-    price = priceRange.value
-  })
-  rating.addEventListener("change",function(event){
-    event.preventDefault()
-    rate = this.value
-  })
-  numberReviews.addEventListener("change",function(event){
-    event.preventDefault()
-    reviewNumber = this.value
-  })
+  submitButton.addEventListener("click", function (event) {
+    event.preventDefault();
+    price = priceRange.value;
+  });
+  rating.addEventListener("change", function (event) {
+    event.preventDefault();
+    rate = this.value;
+  });
+  numberReviews.addEventListener("change", function (event) {
+    event.preventDefault();
+    reviewNumber = this.value;
+  });
+
   // requesting permission to get location info
   navigator.geolocation.getCurrentPosition(
     // will be called if user allows location info
@@ -48,15 +40,23 @@ if ("geolocation" in navigator) {
       maplink.addEventListener("click", function (event) {
         event.preventDefault();
         console.log(event);
-        
-       
-        console.log(price,rate,reviewNumber)
+
+        console.log("QueryParams: ", price, ",", rate, ",", reviewNumber);
+
+        localStorage.setItem(
+          "coffee-locator-filter",
+          JSON.stringify({
+            price: price,
+            rate: rate,
+            reviewNumber: reviewNumber,
+          })
+        );
 
         var queryParams = new URLSearchParams({
           term: "coffee",
           latitude: position.coords.latitude,
           longitude: position.coords.longitude,
-          price: [1,2,3]
+          price: [1, 2, 3],
         });
         fetch(`${cors_anywhere_url}/${yelp_search_url}?${queryParams}`, {
           headers: { Authorization: token },
@@ -102,20 +102,3 @@ if ("geolocation" in navigator) {
     }
   );
 }
-
-// function displayMap() {
-//   var queryParams = new URLSearchParams({
-//     term: "coffee",
-//     latitude: 41.87396088943666,
-//     longitude: -87.95070683026313,
-//   });
-//   fetch(`${cors_anywhere_url}/${yelp_search_url}?${queryParams}`, {
-//     headers: { Authorization: token },
-//   })
-//     .then(function (response) {
-//       return response.json();
-//     })
-//     .then(handleYelpData);
-// }
-
-// maplink.addEventListener("click", displayMap);
