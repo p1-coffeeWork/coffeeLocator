@@ -7,7 +7,7 @@ body {
 
 .title {
   font-family: "Pacifico", serif;
-  font-size: 48px;
+  font-size: 4rem;
   text-align: center;
   color: white;
 }
@@ -104,4 +104,14 @@ body {
 .responsive-img {
   width: 100%;
   height: auto;
+}
+
+.modal-btn {
+  display: flex;
+  justify-content: center;
+  margin:10%;
+}
+
+.btn-large {
+  margin: 1rem;
 }
