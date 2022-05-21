@@ -1,5 +1,5 @@
 const baseURL = 'https://api.sampleapis.com/coffee/iced';
-var recipe = 0;
+
 
 function renderIcedCoffee (data){
  console.log(data);
