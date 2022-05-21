@@ -1,4 +1,4 @@
-![Coffee Locator](./assets/images/logo.png)
+# ![Coffee Locator](./assets/images/logo.png)
 
 # Coffee Shop
 
