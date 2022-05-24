@@ -31,7 +31,7 @@ Pick all or some of the filters provided to customize your search. Do you want a
 
 ### The Map
 
-Your modal leads you to a map that shows cups of coffee markers uniquely positioned on a map for you and you alone. Need more info to make your decision, no problem. Click a cup and you are given all the details you need. If you are already convinced, but need contact information, click that cup. If you are just want to know about coffee shops in your area, keep clicking away. There's no end to that game :-). The info window also provides lines to Yelp and Google Navigation if you need additional services. You could also just click on the phone number to make a direct call.
+Your modal leads you to a map that shows cups of coffee markers uniquely positioned on a map for you and you alone. Need more info to make your decision, no problem. Click a cup and you are given all the details you need. If you are already convinced, but need contact information, click that cup. If you are just want to know about coffee shops in your area, keep clicking away. There's no end to that game :-). The info window also provides links to Yelp and Google Navigation if you need additional services. You could also just click on the phone number to make a direct call.
 
 ![Initial map view](./assets/images/map-with-markers.png)
 ![Summary information on shop](./assets/images/summary-shop-info.png)
