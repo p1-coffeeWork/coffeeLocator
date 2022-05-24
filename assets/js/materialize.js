@@ -1,12 +1,14 @@
 // modal trigger
 $(document).ready(function () {
   $(".modal").modal();
-
+  
+/*
   console.log(
     "local storage filters: ",
     JSON.parse(localStorage.getItem("coffee-locator-filter"))
   );
-
+*/
+  
   var filter = JSON.parse(localStorage.getItem("coffee-locator-filter"));
 
   if (filter) {
