@@ -173,7 +173,7 @@ function generateInfoWindowCard(shop) {
   card_content +=
     '<span class="card-title activator grey-text text-darken-4 truncate">' +
     Math.round(shop.distance / 1609, 1) +
-    ' mile(s) away<i class="material-icons right">more_vert</i></span>'; // convert distance from meters to miles
+    ' mi away<i class="material-icons right">more_vert</i></span>'; // convert distance from meters to miles
   card_content +=
     '<span class="card-title activator grey-text text-darken-4 truncate"><a title="view more information on Yelp" target="_blank" href="' +
     shop.url +
@@ -200,13 +200,13 @@ function generateInfoWindowCard(shop) {
 
   var card_action = '<div class="card-action">';
   card_action +=
-    '<button class="btn waves-effect waves-light blue-grey col s12 m4 left">Review Count: ' +
+    '<button class="btn waves-effect waves-light blue-grey col s12 m4 left"> ' +
     shop.review_count +
-    "</button>";
+    " Reviews</button>";
   card_action +=
-    '<button class="btn waves-effect waves-light blue-grey right col s12 m4 offset-m2">Rating: ' +
+    '<button class="btn waves-effect waves-light blue-grey right col s12 m4 offset-m2"> ' +
     shop.rating +
-    "</button>";
+    "-star</button>";
   card_action += "</div>";
 
   // append all sections
