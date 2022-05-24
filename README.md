@@ -6,7 +6,7 @@
 <table>
 <tr>
 <td>
-  Have you ever wanted to find a coffee shop near you either for a delicious cup of coffee or for a change in scenery while you do this work-from-home thing? Our Coffee Locator app is the tool for you. With just a few clicks, you can narrow down your choices and be at the shop in no time. The app connects with some of our most trusted search engines like Google Maps and Yelp for reliability and consistency in features. Coffee Locator is provided as a web app, no install necessary, just save a shortcut on your mobile or desktop device and you are well on your way to great satisfaction. 
+  Have you ever wanted to find a coffee shop near you either for a delicious cup of coffee or for a change in scenery while you do this work-from-home thing? Our Coffee Shop app is the tool for you. With just a few clicks, you can narrow down your choices and be at the shop in no time. The app connects with some of our most trusted search engines like Google Maps and Yelp for reliability and consistency in features. Coffee Shop is provided as a web app, no install necessary, just save a shortcut on your mobile or desktop device and you are well on your way to great satisfaction. 
 </td>
 </tr>
 </table>
