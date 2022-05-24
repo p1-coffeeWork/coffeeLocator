@@ -8,7 +8,7 @@ if ("geolocation" in navigator) {
   var maplink = document.querySelector("#submit-btn");
 
   function handleYelpData(data) {
-    //console.log("Yelp data: ", data);
+    // console.log("Yelp data: ", data);
 
     renderMap(data);
   }
@@ -39,9 +39,9 @@ if ("geolocation" in navigator) {
     function (position) {
       maplink.addEventListener("click", function (event) {
         event.preventDefault();
-        //console.log(event);
+        // console.log(event);
 
-        //console.log("QueryParams: ", price, ",", rate, ",", reviewNumber);
+        // console.log("QueryParams: ", price, ",", rate, ",", reviewNumber);
 
         localStorage.setItem(
           "coffee-locator-filter",
