@@ -1,7 +1,7 @@
 const baseURL = 'https://api.sampleapis.com/coffee/hot';
 
 function renderHotCoffee (data){
-  console.log(data);
+  //console.log(data);
   $('#title1').text(data[0].title);
   $('#description1').text(data[0].description);
   $('#ingredient1').text(data[0].ingredients[0]);
