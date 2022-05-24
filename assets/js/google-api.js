@@ -13,7 +13,7 @@ var current_loc = {
 
 // Renders google map after modal is submitted
 function renderMap(data) {
-  console.log("yelp data", data);
+  //console.log("yelp data", data);
 
   infoWindowIsClosed = true;
 
@@ -48,7 +48,7 @@ function renderMap(data) {
     lng: data.region.center.longitude,
   };
 
-  console.log("current location: ", current_loc);
+  //console.log("current location: ", current_loc);
   // customize map options
   var options = {
     zoom: 12,
@@ -71,9 +71,9 @@ function renderMap(data) {
 
   // The marker, positioned at center
   // only return the top 10 records
-  console.log(data.businesses);
+  //console.log(data.businesses);
   data.businesses.forEach((shop) => {
-    console.log(shop.coordinates.latitude, shop.coordinates.longitude);
+    //console.log(shop.coordinates.latitude, shop.coordinates.longitude);
     const shop_marker = new google.maps.Marker({
       position: {
         lat: shop.coordinates.latitude,
@@ -122,8 +122,8 @@ function renderMap(data) {
 }
 
 function generateInfoWindowCard(shop) {
-  console.log("shop");
-  console.log(shop);
+  //console.log("shop");
+  //console.log(shop);
 
   var shop_content = '<div class="col s12 border-red">';
   shop_content +=
